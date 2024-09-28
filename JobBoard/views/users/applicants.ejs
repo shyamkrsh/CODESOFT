@@ -1,0 +1,22 @@
+<%- layout("./layouts/boilerplate.ejs") %>
+<body>
+    <div class="applicants-container form-container">
+            <h2>List of your applicants,</h2><br>
+           <table class="table table-hover">
+            <tbody>
+                <th>Applicant's Name: </th>
+                <th>Applicant's Email</th>
+                <th>Applicant's Phone</th>
+                <th>Applicant's resume</th>
+            </tbody>
+            <% for(let application of totalApplications){ %>
+                <tbody>
+                    <td><%= application.name %></td>
+                    <td><%= application.email %></td>
+                    <td><%= application.mobileNumber %></td>
+                    <td><a href="<%= application.resume %>"><button class="btn btn-success">Resume</button></a></td>
+                </tbody>
+            <% } %>
+          </table>
+    </div>
+</body>

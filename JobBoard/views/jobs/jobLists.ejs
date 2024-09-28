@@ -1,0 +1,79 @@
+<%- layout("./layouts/boilerplate.ejs") %>
+<body>
+  
+   <div class="jobs-container">
+        <div class="user-details">
+          <div class="profile-image">
+            <div class="background-profile-image">
+
+            </div>
+            <div class="image">
+              <img src="<%= currUser.userImage.url %>">
+            </div>
+          </div>
+          <div class="profile-content">
+            <h5><%= currUser.name %></h5>
+            <p><%= currUser.role %></p>
+            <p><%= currUser.username %></p>
+
+            <a href="/profile"><button class="btn btn-primary">view profile</button></a>
+          </div>
+        </div>
+        <div class="jobs">
+          <div class="search-panel mt-2 mb-3">
+            <form action="/jobLists/search" method="post">
+              <div class="flex">
+                <input type="text" class="form-control" placeholder="Search jobs" name="jobName">
+                <button class="btn btn-success">Search</button>
+              </div>
+            </form>
+          </div>
+          <div class="col">
+            <% for(let job of jobLists){ %>
+              <% if(searched != ""){ %>
+                <% if(job.title.split(" ").join("").toUpperCase().includes(searched) == true){ %>
+                  <div class="card w-100 mb-3">
+                    <div class="card-body">
+                      <div class="posted-profile">
+                        <div class="companyLogo">
+                          <img src="<%= job.companyLogo %>">
+                        </div>
+                        <div class="jobTitle">
+                          <h2 class="card-title">
+                            <a href="/jobLists/<%= job._id %>"><%= job.title %></a>
+                          </h2>
+                          <p class="card-text" style="font-size: 15px;"><%= job.company %>,  <%= job.location %></p>
+                        </div>
+                      </div>
+                      <p class="card-text" style="margin-left: 4rem; color: darkgray; font-size: 13px;">Salary : <%= job.salary %></p>
+                      <p class="card-text" style="margin-left: 4rem; color: darkgray; font-size: 13px;">Deadline : <%= job.deadline %></p>
+                    </div>
+                  </div>
+                <% } %>
+              <% } %>
+
+              <% if(searched == ""){ %>
+                <div class="card w-100 mb-3">
+                  <div class="card-body">
+                    <div class="posted-profile">
+                      <div class="companyLogo">
+                        <img src="<%= job.companyLogo %>">
+                      </div>
+                      <div class="jobTitle">
+                        <h2 class="card-title">
+                          <a href="/jobLists/<%= job._id %>"><%= job.title %></a>
+                        </h2>
+                        <p class="card-text" style="font-size: 15px;"><%= job.company %>,  <%= job.location %></p>
+                      </div>
+                    </div>
+                    <p class="card-text" style="margin-left: 4rem; color: darkgray; font-size: 13px;">Salary : <%= job.salary %></p>
+                    <p class="card-text" style="margin-left: 4rem; color: darkgray; font-size: 13px;">Deadline : <%= job.deadline %></p>
+                  </div>
+                </div>
+                <% } %>
+            <% } %>
+              
+            </div>
+        </div>
+   </div>   
+</body>

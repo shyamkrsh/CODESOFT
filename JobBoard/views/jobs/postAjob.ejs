@@ -1,0 +1,39 @@
+<%- layout("./layouts/boilerplate.ejs") %>
+<body>
+    <div class="form-container">
+        <form action="/jobLists/postAjob" method="post" class="needs-validation" novalidate>
+            <div class="applicantImage mb-5"  style="text-align-last: center;">
+                <img src="<%= currUser.userImage.url %>">
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Job Title: </label>
+                <input type="text" placeholder="Enter Job title" class="form-control" required name="title" >
+            </div>
+            <div class="mb-3">
+                <label for="company" class="form-label">Company Name: </label>
+                <input type="text" placeholder="Enter your company name" class="form-control" required name="company" >
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location / City: </label>
+                <input type="text" placeholder="Enter Job Location" class="form-control" required name="location" >
+            </div>
+            <div class="mb-3">
+                <label for="salary" class="form-label">Salary: </label>
+                <input type="text" placeholder="Enter Salary" class="form-control" required name="salary" >
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Job Descreption: </label>
+                <textarea type="text" placeholder="Write your job description" class="form-control" required name="description" rows="5"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="requirements" class="form-label">Requirements: </label>
+                <input type="text" placeholder="Enter your requirements" class="form-control" required name="requirements" >
+            </div>
+            <div class="mb-3">
+                <label for="deadline" class="form-label">Deadline: </label>
+                <input type="date" placeholder="Enter deadline date" class="form-control" required name="deadline" >
+            </div>
+            <button class="btn btn-primary">Post</button>
+        </form>
+    </div>
+</body>

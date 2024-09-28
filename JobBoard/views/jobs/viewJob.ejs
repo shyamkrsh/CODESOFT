@@ -1,0 +1,26 @@
+<%- layout("./layouts/boilerplate.ejs") %>
+<body>
+    <div class="card w-70 mb-3  viewJob form-container">
+        <div class="card-body">
+          <div class="posted-profile">
+            <div class="companyLogo">
+              <img src="<%= job.companyLogo %>">
+            </div>
+            <div class="jobTitle">
+              <h2 class="card-title"><%= job.title %></h2>
+              <p class="card-text" style="font-size: 15px;"><%= job.location %></p>
+            </div>
+          </div>
+          <p class="card-text" style="color: darkgray; font-size: 13px;"><%= job.salary %></p>
+          <p class="card-text"><b>Company name : </b><%= job.company %></p>
+          <p class="card-text"><b>Description : </b><%= job.description %></p>
+          <p class="card-text" ><b>Requiremants : </b><%= job.requirements %></p>
+          <p class="card-text" ><b>Deadline : </b><%= job.deadline %></p>
+
+          <div class="btns">
+            <a href="/jobLists/<%= job.owner %>/apply"><button class="card-text btn btn-primary">Apply <i class="fa-solid fa-arrow-up-right-from-square"></i></button></a>
+            <a href=""><button class="card-text btn btn-outline-success" style="color: black !important;">Save</button></a>
+          </div>
+        </div>
+      </div>
+</body>

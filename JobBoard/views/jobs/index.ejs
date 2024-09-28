@@ -1,0 +1,112 @@
+<%- layout("./layouts/boilerplate2.ejs") %>
+<body>
+
+    <div class="home-container">
+      <div class="content-container">
+         <div class="first-container">
+            <p>4536+ jobs listed</p>
+            <p class="main-heading">Find your Dream Job</p>
+            <p>Here you can choose perfect job as you want, explore your career</p>
+            <br>
+            <a href="/jobLists"><button class="btn btn-success">Explore New Jobs</button></a>
+         </div>
+      </div>
+    </div>
+
+
+  <div class="job-section">
+    <div class="jobLists-container">
+      <div class="first-search-panel mt-2 mb-3">
+        <form action="/jobLists/searchHome" method="post">
+          <div class="flex">
+            <input type="text" class="form-control" placeholder="Search jobs" name="jobName">
+            <button class="btn btn-success">Search</button>
+          </div>
+        </form>
+      </div>
+      <div class="col first-search-result">
+        <% for(let job of jobLists){ %>
+          <% if(searched != ""){ %>
+            <% if(job.title.split(" ").join("").toUpperCase().includes(searched) == true){ %>
+              <div class="card w-800 mb-3">
+                <div class="card-body">
+                  <div class="posted-profile">
+                    <div class="companyLogo">
+                      <img src="<%= job.companyLogo %>">
+                    </div>
+                    <div class="jobTitle">
+                      <h2 class="card-title">
+                        <a href="/jobLists/<%= job._id %>"><%= job.title %></a>
+                      </h2>
+                      <p class="card-text" style="font-size: 15px;"><%= job.company %>,  <%= job.location %></p>
+                    </div>
+                  </div>
+                  <p class="card-text" style="margin-left: 4rem; color: darkgray; font-size: 13px;">Salary : <%= job.salary %></p>
+                  <p class="card-text" style="margin-left: 4rem; color: darkgray; font-size: 13px;">Deadline : <%= job.deadline %></p>
+                </div>
+              </div>
+            <% } %>
+          <% } %>
+
+          <% if(searched == ""){ %>
+            <div class="card w-100 mb-3">
+              <div class="card-body">
+                <div class="posted-profile">
+                  <div class="companyLogo">
+                    <img src="<%= job.companyLogo %>">
+                  </div>
+                  <div class="jobTitle">
+                    <h2 class="card-title">
+                      <a href="/jobLists/<%= job._id %>"><%= job.title %></a>
+                    </h2>
+                    <p class="card-text" style="font-size: 15px;"><%= job.company %>,  <%= job.location %></p>
+                  </div>
+                </div>
+                <p class="card-text" style="margin-left: 4rem; color: darkgray; font-size: 13px;">Salary : <%= job.salary %></p>
+                <p class="card-text" style="margin-left: 4rem; color: darkgray; font-size: 13px;">Deadline : <%= job.deadline %></p>
+              </div>
+            </div>
+            <% } %>
+        <% } %>
+          
+        </div>
+    </div>
+  </div>
+
+  <div class="popular-companies">
+    <p style="font-size: 1.2rem;">Popular Companies, </p>
+
+      <div class="company-list">
+        <div class="company">
+          <div class="company-logo">
+            <img src="https://cdn.pixabay.com/photo/2021/05/24/09/15/google-logo-6278331_1280.png">
+          </div>
+           <p>Google</p>
+      </div>
+      <div class="company">
+        <div class="company-logo">
+          <img src="https://i.pinimg.com/originals/01/ca/da/01cada77a0a7d326d85b7969fe26a728.jpg">
+        </div>
+         <p>Google</p>
+      </div>
+      <div class="company">
+        <div class="company-logo">
+          <img src="https://cdn.pixabay.com/photo/2021/08/10/15/36/microsoft-6536268_1280.png">
+        </div>
+       <p>Google</p>
+      </div>
+      <div class="company">
+        <div class="company-logo">
+          <img src="https://logolook.net/wp-content/uploads/2022/08/Wipro-Logo-2048x1152.png">
+        </div>
+        <p>Google</p>
+      </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <br><br> <br><br>
+
+</body>

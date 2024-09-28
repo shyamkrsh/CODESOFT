@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-md  sticky-top" id="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <div class="icon">
+          <div class="logo-icon"> <i class="fa-solid fa-magnifying-glass"></i></div>
+           <div class="logo-content">
+            Job Board
+            <span style="font-size: 15px; display: block; margin-top: -10px; font-weight: 600;">Find your dream job</span>
+         </div>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+        <span class="fa-solid fa-bars" id="menu">
+          </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav offset-3">
+          <a class="nav-link" aria-current="page" href="/">Home</a>
+          <a class="nav-link" href="/jobLists">Jobs</a>
+          <a class="nav-link" href="/applicants">Pages</a>
+          <a class="nav-link" href="/profile">Profile</a>
+        </div>
+       
+        <div class="navbar-nav ms-auto">
+          <% if(!currUser){ %>
+            <a class="nav-link" href="/login"><button class="btn">Login</button></a>
+            <a class="nav-link" href="/signup"><button class="btn btn-success">Sign Up</button></a>
+          <% } %>
+          <% if(currUser){ %>
+            <a class="nav-link" href="/jobLists/postAjob"><button class="btn btn-success">Post A Job</button></a>
+            <a class="nav-link" href="/logout"><button class="btn btn-danger">Logout</button></a>
+            <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
