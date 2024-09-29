@@ -19,7 +19,6 @@ const userRouter = require("./routes/users");
 const methodOverride = require("method-override");
 const Job = require('./models/jobs');
 
-
 const MONGO_URL = "mongodb+srv://sksh58573:heQGYdn7ltlb1P2O@cluster0.ygpet.mongodb.net/JOBBOARD?retryWrites=true&";
 main().then(() => {
     console.log("Connected to DB");
