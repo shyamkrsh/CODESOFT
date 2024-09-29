@@ -16,7 +16,7 @@ router.get("/login", userControllers.loginForm);
 router.post("/login", saveRedirectUrl, passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), wrapAsync(userControllers.login));
 router.get("/logout", userControllers.logout);
 router.get("/profile", isLoggedIn, userControllers.getProfile);
-router.post("/updateProfile/:id", isLoggedIn, wrapAsync(userControllers.updateProfile));
+router.post("/updateProfile/:id", isLoggedIn, upload.single('user[userImage]'), wrapAsync(userControllers.updateProfile));
 router.get("/deleteAccount", (req, res) => {
     res.render("users/sureToDelete.ejs");
 })

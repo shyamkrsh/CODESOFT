@@ -1,10 +1,10 @@
 <%- layout("./layouts/boilerplate.ejs") %>
 <body>
     <div class="form-container">
-        <form method="post" action="/updateProfile/<%= currUser._id %>" class="needs-validation" novalidate >
+        <form method="post" action="/updateProfile/<%= currUser._id %>" class="needs-validation" novalidate enctype="multipart/form-data">
             <div class="applicantImage mb-5"  style="text-align-last: center;">
                 <img src="<%= currUser.userImage.url %>">
-                <!-- <input type="file" class="mt-2 form-control col-2" required name="user[userImage]" disabled> -->
+                <input type="file" class="mt-2 form-control col-2"  name="user[userImage]" disabled>
             </div>
             <div class="mb-3">
                 <label for="user[name]" class="form-label">Name: </label>

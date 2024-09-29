@@ -12,7 +12,6 @@ module.exports.signup = async(req, res, next) => {
         const newUser = new User(req.body.user);
         newUser.userImage = {url, filename};
         const registeredUser = await User.register(newUser, password);
-        console.log(registeredUser);
         req.login(registeredUser, (err) => {
             if(err) {
                 return next(err);
@@ -48,7 +47,12 @@ module.exports.getProfile = (req, res, next) => {
 module.exports.updateProfile = async(req, res, next) => {
     let {id} = req.params;
     let data = req.body.user;
-   const updated = await User.findByIdAndUpdate(id, {name: data.name, role: data.role, username: data.username, city: data.city}, {new: true}); 
+    const url = req.file.path;
+    const filename = req.file.filename;
+    if(req.file){
+       await User.findByIdAndUpdate(id, {userImage: {url, filename}}, {new: true});
+    }
+    await User.findByIdAndUpdate(id, {name: data.name, role: data.role, username: data.username, city: data.city}, {new: true}); 
    res.redirect("/profile");
 }
 module.exports.jobApply = async(req, res, next) => {
