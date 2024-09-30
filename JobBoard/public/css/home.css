@@ -92,9 +92,12 @@ body{
 .first-search-result{
     display: flex;
     flex-wrap: wrap;
-    width: 80vw;
-    height: 20rem;
+    width: 100%;
     overflow-y: scroll;
+    border: 1px solid red;
+    height: 25rem;
+    align-items: center;
+    justify-content: center;
 }
 .first-search-result::-webkit-scrollbar{
     display: none;
@@ -144,7 +147,7 @@ footer{
 /* popular companies */
 
 .popular-companies{
-    width: 100vw;
+    width: 100%;
     height: 15rem;
     padding: 1rem;
 }
@@ -156,12 +159,16 @@ footer{
     padding: 1rem;
 }
 .company{
-    display: grid;
-    place-items: center;
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .company-logo img{
-    width: 70px;
-    height: 70px;
+    width: 3rem;
+    height: 3rem;
 }
 .company p{
     font-size: 1.3rem;
