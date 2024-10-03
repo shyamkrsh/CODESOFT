@@ -1,5 +1,6 @@
 const User = require("../models/users");
 const Applied = require("../models/applied");
+const {sendEmail} = require("../sendingMail");
 
 
 module.exports.signupForm = (req, res, next) => {
