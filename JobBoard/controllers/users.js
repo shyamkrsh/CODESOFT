@@ -1,5 +1,6 @@
 const User = require("../models/users");
 const Applied = require("../models/applied");
+const sendEmail = require("../sendingMail");
 
 module.exports.signupForm = (req, res, next) => {
     res.render("users/signup.ejs");
@@ -16,6 +17,7 @@ module.exports.signup = async(req, res, next) => {
             if(err) {
                 return next(err);
             }
+            sendEmail(req.body.user.username, "", "Thank You for registering at jobBoard, hope you're doing well in your life.");
             req.flash("success", "Registration Successful !");
             res.redirect("/jobLists");
         })
