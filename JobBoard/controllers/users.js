@@ -18,7 +18,7 @@ module.exports.signup = async(req, res, next) => {
             if(err) {
                 return next(err);
             }
-            sendEmail(req.body.user.username, "", "Thank You for registering at jobBoard, hope you're doing well in your life.");
+            sendEmail(req.body.user.username, "Welcome", `Thank You ❤️ ${req.body.user.name} for registering at jobBoard, hope you're doing well in your life.`);
             req.flash("success", "Registration Successful !");
             res.redirect("/jobLists");
         })
